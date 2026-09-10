@@ -4,23 +4,30 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/IHttpRequest.h"
+#include "Interfaces/IHttpResponse.h"
 #include "Ollama.generated.h"
 
 UCLASS()
 class MYPROJECT_API AOllama : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AOllama();
+    GENERATED_BODY()
+
+public:
+    AOllama();
+    UFUNCTION(BlueprintCallable)
+    FString GetAIResponse() const;
+    UFUNCTION(BlueprintCallable)
+    FString SendMessage(const FString& UserMessage);
+
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
+
+private:
+    void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
+    FString LastReply;
+    TSharedPtr<IHttpRequest, ESPMode::ThreadSafe> ActiveRequest;
 };
