@@ -26,7 +26,7 @@ FString AOllama::SendMessage( const FString& UserMessage)
     UE_LOG(LogTemp, Warning, TEXT("SendMessage Called"));
         LastReply = TEXT("Sending...");
         ActiveRequest = FHttpModule::Get().CreateRequest();
-        ActiveRequest->SetURL(TEXT("http://127.0.0.1:11434/api/chat"));
+        ActiveRequest->SetURL(TEXT("http://localhost:11434/api/chat"));
         ActiveRequest->SetVerb(TEXT("POST"));
         ActiveRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
         UE_LOG(LogTemp, Warning, TEXT("Request Created"));
@@ -52,6 +52,7 @@ FString AOllama::SendMessage( const FString& UserMessage)
         UE_LOG(LogTemp, Warning, TEXT("Request Sent"));
         UE_LOG(LogTemp, Warning, TEXT("ProcessRequest=%s"), bStarted ? TEXT("true") : TEXT("false"));
         UE_LOG(LogTemp, Warning, TEXT("Request Point =%p"), ActiveRequest.Get());
+        UE_LOG(LogTemp, Warning, TEXT("URL =%s"), *ActiveRequest->GetURL());
         return LastReply;
 }
 
@@ -59,10 +60,16 @@ void AOllama::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Respo
     UE_LOG(LogTemp, Error, TEXT("CALLBACK FIRED"));
     UE_LOG(LogTemp, Warning, TEXT("OnResponseReceived Called"));
     UE_LOG(LogTemp, Warning, TEXT("Success=%s"), bWasSuccessful ? TEXT("true") : TEXT("false"));
-    if (!Response.IsValid()) {
-        UE_LOG(LogTemp, Error, TEXT("Response Invalid"));
-        return;
-    }
+    UE_LOG(LogTemp, Warning, TEXT("Request URL =%s"), *Request ->GetURL());
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid()) {
+        const TSharedPtr<FJsonObject>* MessageObj;
+        if (JsonObject->TryGetObjectField(TEXT("message"), MessageObj)) {
+                LastReply = (*MessageObj)->GetStringField(TEXT("content"));
+                UE_LOG(LogTemp, Warning, TEXT("AI Reply = %s"), *LastReply);
+            }
+        }
     UE_LOG(LogTemp, Warning, TEXT("Response Code = %d"), Response->GetResponseCode());
     UE_LOG(LogTemp, Warning, TEXT("Response Body = %s"), *Response->GetContentAsString());
 }
