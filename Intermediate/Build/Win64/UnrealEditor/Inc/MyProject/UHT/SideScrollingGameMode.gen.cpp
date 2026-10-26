@@ -159,15 +159,15 @@ ASideScrollingGameMode::~ASideScrollingGameMode() {}
 // ********** End Class ASideScrollingGameMode *****************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ASideScrollingGameMode, ASideScrollingGameMode::StaticClass, TEXT("ASideScrollingGameMode"), &Z_Registration_Info_UClass_ASideScrollingGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASideScrollingGameMode), 2166110966U) },
 	};
-}; // Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_51402160{
+}; // Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics 
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_51402160{
 	TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_SideScrollingGameMode_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0,
 };

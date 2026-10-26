@@ -233,15 +233,15 @@ ACombatCheckpointVolume::~ACombatCheckpointVolume() {}
 // ********** End Class ACombatCheckpointVolume ****************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ACombatCheckpointVolume, ACombatCheckpointVolume::StaticClass, TEXT("ACombatCheckpointVolume"), &Z_Registration_Info_UClass_ACombatCheckpointVolume, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACombatCheckpointVolume), 1121880074U) },
 	};
-}; // Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_209504201{
+}; // Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics 
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_209504201{
 	TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_Combat_Gameplay_CombatCheckpointVolume_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0,
 };

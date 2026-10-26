@@ -7,13 +7,15 @@
 #include "UObject/GeneratedCppIncludes.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeMyProject_init() {}
-static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compiled with !UE_WITH_CONSTINIT_OBJECT");	MYPROJECT_API UFunction* Z_Construct_UDelegateFunction_MyProject_OnEnemyDied__DelegateSignature();
+static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compiled with !UE_WITH_CONSTINIT_OBJECT");	MYPROJECT_API UFunction* Z_Construct_UDelegateFunction_MyProject_OnAIResponseReceived__DelegateSignature();
+	MYPROJECT_API UFunction* Z_Construct_UDelegateFunction_MyProject_OnEnemyDied__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_MyProject;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_MyProject()
 	{
 		if (!Z_Registration_Info_UPackage__Script_MyProject.OuterSingleton)
 		{
 		static UObject* (*const SingletonFuncArray[])() = {
+			(UObject* (*)())Z_Construct_UDelegateFunction_MyProject_OnAIResponseReceived__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_MyProject_OnEnemyDied__DelegateSignature,
 		};
 		static const UECodeGen_Private::FPackageParams PackageParams = {
@@ -21,13 +23,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			SingletonFuncArray,
 			UE_ARRAY_COUNT(SingletonFuncArray),
 			PKG_CompiledIn | 0x00000000,
-			0x1D1BC2F2,
-			0xB9AC0DBE,
+			0x234CFEF0,
+			0xC888A082,
 			METADATA_PARAMS(0, nullptr)
 		};
 		UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_MyProject.OuterSingleton, PackageParams);
 	}
 	return Z_Registration_Info_UPackage__Script_MyProject.OuterSingleton;
 }
-static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_MyProject(Z_Construct_UPackage__Script_MyProject, TEXT("/Script/MyProject"), Z_Registration_Info_UPackage__Script_MyProject, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x1D1BC2F2, 0xB9AC0DBE));
+static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_MyProject(Z_Construct_UPackage__Script_MyProject, TEXT("/Script/MyProject"), Z_Registration_Info_UPackage__Script_MyProject, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x234CFEF0, 0xC888A082));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -16,8 +16,15 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// ********** Begin Delegate FOnAIResponseReceived *************************************************
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_15_DELEGATE \
+MYPROJECT_API void FOnAIResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnAIResponseReceived, const FString& ResponseText);
+
+
+// ********** End Delegate FOnAIResponseReceived ***************************************************
+
 // ********** Begin Class AOllama ******************************************************************
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execSendMessage); \
 	DECLARE_FUNCTION(execGetAIResponse);
 
@@ -25,7 +32,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct Z_Construct_UClass_AOllama_Statics;
 MYPROJECT_API UClass* Z_Construct_UClass_AOllama_NoRegister();
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_INCLASS_NO_PURE_DECLS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAOllama(); \
 	friend struct ::Z_Construct_UClass_AOllama_Statics; \
@@ -36,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(AOllama)
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_ENHANCED_CONSTRUCTORS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AOllama(AOllama&&) = delete; \
 	AOllama(const AOllama&) = delete; \
@@ -46,13 +53,13 @@ public: \
 	NO_API virtual ~AOllama();
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_11_PROLOG
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_GENERATED_BODY \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_52_PROLOG
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_INCLASS_NO_PURE_DECLS \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_14_ENHANCED_CONSTRUCTORS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_INCLASS_NO_PURE_DECLS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -62,6 +69,6 @@ class AOllama;
 // ********** End Class AOllama ********************************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Ollama_h
+#define CURRENT_FILE_ID FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

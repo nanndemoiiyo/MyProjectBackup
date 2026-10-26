@@ -186,15 +186,15 @@ ASideScrollingNPC::~ASideScrollingNPC() {}
 // ********** End Class ASideScrollingNPC **********************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ASideScrollingNPC, ASideScrollingNPC::StaticClass, TEXT("ASideScrollingNPC"), &Z_Registration_Info_UClass_ASideScrollingNPC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASideScrollingNPC), 4191159828U) },
 	};
-}; // Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_126113147{
+}; // Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics 
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_126113147{
 	TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingNPC_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0,
 };

@@ -1,3 +1,2 @@
-2026/09/13-13:53:28.009 4ed0 Reusing MANIFEST C:\unrealengine\Unreal Projects\MyProject\Saved\webcache_6613\Default\WebStorage\1\FileSystem\t\Paths/MANIFEST-000001
-2026/09/13-13:53:28.013 4ed0 Recovering log #3
-2026/09/13-13:53:28.013 4ed0 Reusing old log C:\unrealengine\Unreal Projects\MyProject\Saved\webcache_6613\Default\WebStorage\1\FileSystem\t\Paths/000003.log 
+2026/10/26-21:37:04.870 6dc4 Creating DB C:\Users\taiyo\Unreal Projects\MyProject\Saved\webcache_6613\Default\WebStorage\1\FileSystem\t\Paths since it was missing.
+2026/10/26-21:37:04.873 6dc4 Reusing MANIFEST C:\Users\taiyo\Unreal Projects\MyProject\Saved\webcache_6613\Default\WebStorage\1\FileSystem\t\Paths/MANIFEST-000001

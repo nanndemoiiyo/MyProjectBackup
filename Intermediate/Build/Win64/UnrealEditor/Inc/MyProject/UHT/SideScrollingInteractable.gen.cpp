@@ -169,15 +169,15 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_NS(, USideScrollingInteractable);
 // ********** End Interface USideScrollingInteractable *********************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_USideScrollingInteractable, USideScrollingInteractable::StaticClass, TEXT("USideScrollingInteractable"), &Z_Registration_Info_UClass_USideScrollingInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USideScrollingInteractable), 2914100328U) },
 	};
-}; // Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_2056215720{
+}; // Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics 
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_2056215720{
 	TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_Interfaces_SideScrollingInteractable_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0,
 };

@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\unrealengine\\Unreal Projects\\MyProject\\Source\\MyProject\\MyProject.Build.cs",
-		"C:\\unrealengine\\Unreal Projects\\MyProject\\Source\\MyProject.Target.cs",
-		"C:\\unrealengine\\Unreal Projects\\MyProject\\Source\\MyProjectEditor.Target.cs"
+		"C:\\Users\\taiyo\\Unreal Projects\\MyProject\\Source\\MyProject\\MyProject.Build.cs",
+		"C:\\Users\\taiyo\\Unreal Projects\\MyProject\\Source\\MyProject.Target.cs",
+		"C:\\Users\\taiyo\\Unreal Projects\\MyProject\\Source\\MyProjectEditor.Target.cs"
 	],
 	"EngineVersion": "5.7.4"
 }

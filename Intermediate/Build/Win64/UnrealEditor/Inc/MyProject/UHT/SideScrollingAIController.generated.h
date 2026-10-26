@@ -20,7 +20,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct Z_Construct_UClass_ASideScrollingAIController_Statics;
 MYPROJECT_API UClass* Z_Construct_UClass_ASideScrollingAIController_NoRegister();
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASideScrollingAIController(); \
 	friend struct ::Z_Construct_UClass_ASideScrollingAIController_Statics; \
@@ -31,7 +31,7 @@ public: \
 	DECLARE_SERIALIZER(ASideScrollingAIController)
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ASideScrollingAIController(ASideScrollingAIController&&) = delete; \
 	ASideScrollingAIController(const ASideScrollingAIController&) = delete; \
@@ -41,12 +41,12 @@ public: \
 	NO_API virtual ~ASideScrollingAIController();
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_14_PROLOG
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_GENERATED_BODY \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_14_PROLOG
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_INCLASS_NO_PURE_DECLS \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -56,6 +56,6 @@ class ASideScrollingAIController;
 // ********** End Class ASideScrollingAIController *************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h
+#define CURRENT_FILE_ID FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Variant_SideScrolling_AI_SideScrollingAIController_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -20,7 +20,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct Z_Construct_UClass_AMyProjectGameMode_Statics;
 MYPROJECT_API UClass* Z_Construct_UClass_AMyProjectGameMode_NoRegister();
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMyProjectGameMode(); \
 	friend struct ::Z_Construct_UClass_AMyProjectGameMode_Statics; \
@@ -31,7 +31,7 @@ public: \
 	DECLARE_SERIALIZER(AMyProjectGameMode)
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AMyProjectGameMode(AMyProjectGameMode&&) = delete; \
 	AMyProjectGameMode(const AMyProjectGameMode&) = delete; \
@@ -41,12 +41,12 @@ public: \
 	NO_API virtual ~AMyProjectGameMode();
 
 
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_12_PROLOG
-#define FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_GENERATED_BODY \
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_12_PROLOG
+#define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_INCLASS_NO_PURE_DECLS \
-	FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_ENHANCED_CONSTRUCTORS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_INCLASS_NO_PURE_DECLS \
+	FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -56,6 +56,6 @@ class AMyProjectGameMode;
 // ********** End Class AMyProjectGameMode *********************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_unrealengine_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h
+#define CURRENT_FILE_ID FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_MyProjectGameMode_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
