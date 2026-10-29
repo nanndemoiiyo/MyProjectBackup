@@ -39,6 +39,7 @@ FString AOllama::SendMessage( const FString& UserMessage)
 {
     LastReply = TEXT("Sending...");
     AddUserMessage(UserMessage);
+    EvaluateConversationWithAI(UserMessage);
     CreateRequest();
     FString RequestBody = CreateRequestBody();
     SendRequest(RequestBody);
@@ -216,6 +217,61 @@ FString AOllama::BuildMemoryDescription() const {
     return MemoryText;
 }
 
+void AOllama::ApplyEvaluation(const DayAction& Result)
+{
+    Child.Trust += Result.TrustDelta;
+    Child.SelfEsteem += Result.SelfEsteemDelta;
+    Child.Confidence += Result.ConfidenceDelta;
+    Child.SocialSkill += Result.SocialSkillDelta;
+    Child.Happiness += Result.HappinessDelta;
+    Child.Stress += Result.StressDelta;
+
+    Child.Clamp();
+
+    AddMemory(Result.MemoryText, Result.MemoryImportance);
+
+    
+}
+
+
+void AOllama::ParseEvaluationResponse(const FString& ResponseBody) {
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+    if (!FJsonSerializer::Deserialize(Reader, JsonObject)
+        || !JsonObject.IsValid()) {
+        UE_LOG(LogTemp, Error, TEXT("Evaluation JSON Parse Failed"));
+        return;
+    }
+    DayAction Result;
+    Result.MemoryImportance = JsonObject->GetIntegerField(TEXT("importance"));
+    Result.MemoryText = JsonObject->GetStringField(TEXT("memory"));
+    Result.TrustDelta = JsonObject->GetIntegerField(TEXT("trust_delta"));
+    Result.SelfEsteemDelta = JsonObject->GetIntegerField(TEXT("selfesteem_delta"));
+    Result.ConfidenceDelta = JsonObject->GetIntegerField(TEXT("confidence_delta"));
+    Result.SocialSkillDelta = JsonObject->GetIntegerField(TEXT("socialskill_delta"));
+    Result.HappinessDelta = JsonObject->GetIntegerField(TEXT("happiness_delta"));
+    Result.StressDelta = JsonObject->GetIntegerField(TEXT("stress_delta"));
+    ApplyEvaluation(Result);
+}
+
+void AOllama::EvaluateConversationWithAI(
+    const FString& UserMessage)
+{
+    FString FakeResponse =
+        TEXT("{"
+            "\"importance\":3,"
+            "\"memory\":\"talked with parent\","
+            "\"trust_delta\":5,"
+            "\"selfesteem_delta\":0,"
+            "\"confidence_delta\":1,"
+            "\"socialskill_delta\":0,"
+            "\"happiness_delta\":4,"
+            "\"stress_delta\":-1"
+            "}");
+
+    ParseEvaluationResponse(FakeResponse);
+}
+
 //=======================
 //Child State
 //========================
@@ -250,13 +306,18 @@ bGameOver = true;
     return bGameOver;
 }
 
-void AOllama::PrintState() const {
-    UE_LOG(LogTemp, Warning, TEXT("Trust: %d"), Child.Trust);
-    UE_LOG(LogTemp, Warning, TEXT("SelfEsteem: %d"), Child.SelfEsteem);
-    UE_LOG(LogTemp, Warning, TEXT("Confidence: %d"), Child.Confidence);
-    UE_LOG(LogTemp, Warning, TEXT("SocialSkill: %d"), Child.SocialSkill);
-    UE_LOG(LogTemp, Warning, TEXT("Happiness: %d"), Child.Happiness);
-    UE_LOG(LogTemp, Warning, TEXT("Stress: %d"), Child.Stress);
+FString AOllama::GetStatesText() const
+{
+    FString StateText;
+
+    StateText += FString::Printf(TEXT("Trust: %d\n"), Child.Trust);
+    StateText += FString::Printf(TEXT("SelfEsteem: %d\n"), Child.SelfEsteem);
+    StateText += FString::Printf(TEXT("Confidence: %d\n"), Child.Confidence);
+    StateText += FString::Printf(TEXT("SocialSkill: %d\n"), Child.SocialSkill);
+    StateText += FString::Printf(TEXT("Happiness: %d\n"), Child.Happiness);
+    StateText += FString::Printf(TEXT("Stress: %d"), Child.Stress);
+
+    return StateText;
 }
 
 //======================
@@ -304,32 +365,32 @@ void AOllama::ApplyAction(const DayAction& Action) {
 //行動選択
 void AOllama::InitializeActions() {
     DayAction Study;
-    Study.Name = TEXT("一緒に勉強する");
+    Study.Name = TEXT("Study with parent");
     Study.ConfidenceDelta = 5;
     Study.StressDelta = 2;
     Study.TrustDelta = 1;
     Study.MemoryImportance = 3;
-    Study.MemoryText = TEXT("親と一緒に勉強した");
+    Study.MemoryText = TEXT("Studied with parent");
 
     DailyActions.Add(Study);
 
     DayAction Play;
-    Play.Name = TEXT("一緒に公園で遊ぶ");
+    Play.Name = TEXT("Play in the park");
     Play.SocialSkillDelta = 5;
     Play.HappinessDelta = 3;
     Play.StressDelta = -2;
     Play.MemoryImportance = 4;
-    Play.MemoryText = TEXT("親と公園で遊んだ");
+    Play.MemoryText = TEXT("Played in the park with parent");
 
     DailyActions.Add(Play);
 
     DayAction Scold;
-    Scold.Name = TEXT("強くしかる");
+    Scold.Name = TEXT("Scold");
     Scold.TrustDelta = -5;
     Scold.SelfEsteemDelta = -3;
     Scold.StressDelta = 6;
     Scold.MemoryImportance = 8;
-    Scold.MemoryText = TEXT("親に強くしかられた");
+    Scold.MemoryText = TEXT("Scolded by parent");
 
     DailyActions.Add(Scold);
 }
@@ -346,7 +407,7 @@ void AOllama::PerformAction(int ActionIndex) {
     ApplyAction(DailyActions[ActionIndex]);
     AddMemory(DailyActions[ActionIndex].MemoryText, DailyActions[ActionIndex].MemoryImportance);
     UE_LOG(LogTemp, Warning, TEXT("Actions: %s"), *DailyActions[ActionIndex].Name);
-    PrintState();
+    
     PrintMemories();
    
 }

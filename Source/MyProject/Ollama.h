@@ -14,11 +14,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(
     FString,
     ResponseText);
 struct ChildState {
-    int Trust = 100;
-    int SelfEsteem = 100;
-    int Confidence = 100;
-    int SocialSkill = 100;
-    int Happiness = 100;
+    int Trust = 50;
+    int SelfEsteem = 50;
+    int Confidence = 50;
+    int SocialSkill = 50;
+    int Happiness = 50;
     int Stress = 0;
     void Clamp() {
         Trust = FMath::Clamp(Trust, 0, 100);
@@ -62,6 +62,8 @@ public:
     FString GetAIResponse() const;
     UFUNCTION(BlueprintCallable)
     FString SendMessage(const FString& UserMessage);
+    UFUNCTION(BlueprintCallable)
+    FString GetStatesText() const;
    
 
 protected:
@@ -103,7 +105,6 @@ private:
     void ApplyAction(const DayAction& Action);
     void InitializeActions();
     void PrintActions() const;
-    void PrintState() const;
     void PerformAction(int ActionIndex);
     void NextDay();
     void PrintDay() const;
@@ -111,5 +112,8 @@ private:
     void UpdateMemories();
     void PrintMemories() const;
     void EndDay();
+    void ApplyEvaluation(const DayAction& Result);
+    void ParseEvaluationResponse(const FString& ResponseBody);
+    void EvaluateConversationWithAI(const FString& UserMessage);
 };
 

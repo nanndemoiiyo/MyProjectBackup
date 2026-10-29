@@ -25,6 +25,7 @@ MYPROJECT_API void FOnAIResponseReceived_DelegateWrapper(const FMulticastScriptD
 
 // ********** Begin Class AOllama ******************************************************************
 #define FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h_55_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetStatesText); \
 	DECLARE_FUNCTION(execSendMessage); \
 	DECLARE_FUNCTION(execGetAIResponse);
 
