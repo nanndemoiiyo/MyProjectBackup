@@ -72,6 +72,41 @@ void FOnAIResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnAIR
 }
 // ********** End Delegate FOnAIResponseReceived ***************************************************
 
+// ********** Begin Class AOllama Function EndDay **************************************************
+struct Z_Construct_UFunction_AOllama_EndDay_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Ollama.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function EndDay constinit property declarations ********************************
+// ********** End Function EndDay constinit property declarations **********************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOllama_EndDay_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AOllama, nullptr, "EndDay", 	nullptr, 
+	0, 
+0,
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOllama_EndDay_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOllama_EndDay_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_AOllama_EndDay()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOllama_EndDay_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOllama::execEndDay)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->EndDay();
+	P_NATIVE_END;
+}
+// ********** End Class AOllama Function EndDay ****************************************************
+
 // ********** Begin Class AOllama Function GetAIResponse *******************************************
 struct Z_Construct_UFunction_AOllama_GetAIResponse_Statics
 {
@@ -121,6 +156,56 @@ DEFINE_FUNCTION(AOllama::execGetAIResponse)
 	P_NATIVE_END;
 }
 // ********** End Class AOllama Function GetAIResponse *********************************************
+
+// ********** Begin Class AOllama Function GetCurrentDay *******************************************
+struct Z_Construct_UFunction_AOllama_GetCurrentDay_Statics
+{
+	struct Ollama_eventGetCurrentDay_Parms
+	{
+		int32 ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Ollama.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function GetCurrentDay constinit property declarations *************************
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function GetCurrentDay constinit property declarations ***************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function GetCurrentDay Property Definitions ************************************
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Ollama_eventGetCurrentDay_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::PropPointers) < 2048);
+// ********** End Function GetCurrentDay Property Definitions **************************************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AOllama, nullptr, "GetCurrentDay", 	Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::Ollama_eventGetCurrentDay_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::Ollama_eventGetCurrentDay_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOllama_GetCurrentDay()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOllama_GetCurrentDay_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOllama::execGetCurrentDay)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(int32*)Z_Param__Result=P_THIS->GetCurrentDay();
+	P_NATIVE_END;
+}
+// ********** End Class AOllama Function GetCurrentDay *********************************************
 
 // ********** Begin Class AOllama Function GetStatesText *******************************************
 struct Z_Construct_UFunction_AOllama_GetStatesText_Statics
@@ -277,13 +362,17 @@ struct Z_Construct_UClass_AOllama_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AOllama constinit property declarations ************************************
 	static constexpr UE::CodeGen::FClassNativeFunction Funcs[] = {
+		{ .NameUTF8 = UTF8TEXT("EndDay"), .Pointer = &AOllama::execEndDay },
 		{ .NameUTF8 = UTF8TEXT("GetAIResponse"), .Pointer = &AOllama::execGetAIResponse },
+		{ .NameUTF8 = UTF8TEXT("GetCurrentDay"), .Pointer = &AOllama::execGetCurrentDay },
 		{ .NameUTF8 = UTF8TEXT("GetStatesText"), .Pointer = &AOllama::execGetStatesText },
 		{ .NameUTF8 = UTF8TEXT("SendMessage"), .Pointer = &AOllama::execSendMessage },
 	};
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AOllama_EndDay, "EndDay" }, // 2559603207
 		{ &Z_Construct_UFunction_AOllama_GetAIResponse, "GetAIResponse" }, // 3679679654
+		{ &Z_Construct_UFunction_AOllama_GetCurrentDay, "GetCurrentDay" }, // 4114864466
 		{ &Z_Construct_UFunction_AOllama_GetStatesText, "GetStatesText" }, // 904281953
 		{ &Z_Construct_UFunction_AOllama_SendMessage, "SendMessage" }, // 703042637
 	};
@@ -342,10 +431,10 @@ AOllama::~AOllama() {}
 struct Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOllama, AOllama::StaticClass, TEXT("AOllama"), &Z_Registration_Info_UClass_AOllama, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOllama), 2392577207U) },
+		{ Z_Construct_UClass_AOllama, AOllama::StaticClass, TEXT("AOllama"), &Z_Registration_Info_UClass_AOllama, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOllama), 1591216162U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_2767186385{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_4048741200{
 	TEXT("/Script/MyProject"),
 	Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_taiyo_Unreal_Projects_MyProject_Source_MyProject_Ollama_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,

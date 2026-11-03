@@ -74,7 +74,52 @@ FString AOllama::CreateRequestBody() {
     FJsonSerializer::Serialize(RequestObj.ToSharedRef(), Writer);
     return RequestBody;
 }
+FString AOllama::CreateEvaluationRequestBody(
+    const FString& UserMessage)
+{
+    TSharedPtr<FJsonObject> RequestObj =
+        MakeShareable(new FJsonObject);
 
+    RequestObj->SetStringField(
+        TEXT("model"),
+        TEXT("phi3:mini"));
+
+    RequestObj->SetBoolField(
+        TEXT("stream"),
+        false);
+
+    TArray<TSharedPtr<FJsonValue>> Messages;
+
+    TSharedPtr<FJsonObject> SystemObj =
+        MakeShareable(new FJsonObject);
+
+    SystemObj->SetStringField(
+        TEXT("role"),
+        TEXT("user"));
+
+    SystemObj->SetStringField(
+        TEXT("content"),
+        BuildEvaluationPrompt(UserMessage));
+
+    Messages.Add(
+        MakeShareable(
+            new FJsonValueObject(SystemObj)));
+
+    RequestObj->SetArrayField(
+        TEXT("messages"),
+        Messages);
+
+    FString RequestBody;
+
+    TSharedRef<TJsonWriter<>> Writer =
+        TJsonWriterFactory<>::Create(&RequestBody);
+
+    FJsonSerializer::Serialize(
+        RequestObj.ToSharedRef(),
+        Writer);
+
+    return RequestBody;
+}
 
 //CreateJson
 void AOllama::CreateRequest() {
@@ -103,7 +148,7 @@ void AOllama::ParseResponse(const FString& ResponseBody) {
             LastReply = (*MessageObj)->GetStringField(TEXT("content"));
             AddAssistantMessage(LastReply);
             OnAIResponseReceived.Broadcast(LastReply);
-            UE_LOG(LogTemp, Warning, TEXT("AI Reply = %s"), *LastReply);
+            UE_LOG(LogTemp, Warning, TEXT("AI JSON = %s"), *LastReply);
         }
     }
 }
@@ -228,6 +273,14 @@ void AOllama::ApplyEvaluation(const DayAction& Result)
 
     Child.Clamp();
 
+    UE_LOG(LogTemp, Warning,
+        TEXT("After Eval -> Trust=%d SelfEsteem=%d Confidence=%d Happiness=%d Stress=%d"),
+        Child.Trust,
+        Child.SelfEsteem,
+        Child.Confidence,
+        Child.Happiness,
+        Child.Stress);
+
     AddMemory(Result.MemoryText, Result.MemoryImportance);
 
     
@@ -257,19 +310,145 @@ void AOllama::ParseEvaluationResponse(const FString& ResponseBody) {
 void AOllama::EvaluateConversationWithAI(
     const FString& UserMessage)
 {
-    FString FakeResponse =
-        TEXT("{"
-            "\"importance\":3,"
-            "\"memory\":\"talked with parent\","
-            "\"trust_delta\":5,"
-            "\"selfesteem_delta\":0,"
-            "\"confidence_delta\":1,"
-            "\"socialskill_delta\":0,"
-            "\"happiness_delta\":4,"
-            "\"stress_delta\":-1"
-            "}");
+    FString FakeResponse;
+
+    if (UserMessage.Contains(TEXT("‚¦‚ç‚¢")))
+    {
+        FakeResponse =
+            TEXT("{"
+                "\"importance\":4,"
+                "\"memory\":\"praised by parent\","
+                "\"trust_delta\":3,"
+                "\"selfesteem_delta\":5,"
+                "\"confidence_delta\":2,"
+                "\"socialskill_delta\":0,"
+                "\"happiness_delta\":4,"
+                "\"stress_delta\":-2"
+                "}");
+    }
+    else if (UserMessage.Contains(TEXT("‚Î‚©")))
+    {
+        FakeResponse =
+            TEXT("{"
+                "\"importance\":7,"
+                "\"memory\":\"hurt by parent\","
+                "\"trust_delta\":-5,"
+                "\"selfesteem_delta\":-5,"
+                "\"confidence_delta\":-3,"
+                "\"socialskill_delta\":0,"
+                "\"happiness_delta\":-4,"
+                "\"stress_delta\":5"
+                "}");
+    }
+    else
+    {
+        FakeResponse =
+            TEXT("{"
+                "\"importance\":2,"
+                "\"memory\":\"talked with parent\","
+                "\"trust_delta\":1,"
+                "\"selfesteem_delta\":0,"
+                "\"confidence_delta\":0,"
+                "\"socialskill_delta\":0,"
+                "\"happiness_delta\":1,"
+                "\"stress_delta\":0"
+                "}");
+    }
 
     ParseEvaluationResponse(FakeResponse);
+}
+
+FString AOllama::BuildEvaluationPrompt(const FString& UserMessage) const {
+    FString Prompt;
+    Prompt += TEXT("Analyze the parent's message to a child.\n"
+        "Return JSON only.\n"
+        "Do not explain anything.\n\n"
+
+        "{\n"
+        "\"importance\":0,\n"
+        "\"memory\":\"\",\n"
+        "\"trust_delta\":0,\n"
+        "\"selfesteem_delta\":0,\n"
+        "\"confidence_delta\":0,\n"
+        "\"socialskill_delta\":0,\n"
+        "\"happiness_delta\":0,\n"
+        "\"stress_delta\":0\n"
+        "}\n\n"
+
+        "Parent Message:\n");
+    Prompt += UserMessage;
+    return Prompt;
+}
+
+void AOllama::OnEvaluationResponseReceived(
+    FHttpRequestPtr Request,
+    FHttpResponsePtr Response,
+    bool bWasSuccessful)
+{
+    if (!bWasSuccessful || !Response.IsValid())
+    {
+        return;
+    }
+
+    TSharedPtr<FJsonObject> JsonObject;
+
+    TSharedRef<TJsonReader<>> Reader =
+        TJsonReaderFactory<>::Create(
+            Response->GetContentAsString());
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject)
+        && JsonObject.IsValid())
+    {
+        const TSharedPtr<FJsonObject>* MessageObj = nullptr;
+
+        if (JsonObject->TryGetObjectField(
+            TEXT("message"),
+            MessageObj))
+        {
+            FString JsonContent =
+                (*MessageObj)->GetStringField(
+                    TEXT("content"));
+
+            UE_LOG(LogTemp, Warning,
+                TEXT("Evaluation JSON = %s"),
+                *JsonContent);
+
+            ParseEvaluationResponse(JsonContent);
+        }
+    }
+}
+
+
+void AOllama::SendEvaluationRequest(
+    const FString& RequestBody)
+{
+    TSharedPtr<IHttpRequest, ESPMode::ThreadSafe>
+        EvaluationRequest =
+        FHttpModule::Get().CreateRequest();
+
+    EvaluationRequest->SetURL(
+        TEXT("http://127.0.0.1:11434/api/chat"));
+
+    EvaluationRequest->SetVerb(TEXT("POST"));
+
+    EvaluationRequest->SetHeader(
+        TEXT("Content-Type"),
+        TEXT("application/json"));
+
+    EvaluationRequest->SetContentAsString(RequestBody);
+
+    EvaluationRequest->OnProcessRequestComplete()
+        .BindUObject(
+            this,
+            &AOllama::OnEvaluationResponseReceived);
+
+    EvaluationRequest->ProcessRequest();
+}
+
+
+int AOllama::GetCurrentDay() const {
+	return CurrentDay;
+
 }
 
 //=======================
@@ -409,7 +588,7 @@ void AOllama::PerformAction(int ActionIndex) {
     UE_LOG(LogTemp, Warning, TEXT("Actions: %s"), *DailyActions[ActionIndex].Name);
     
     PrintMemories();
-   
+    bActionUsedToday = true;
 }
 
 void AOllama::PrintActions() const {

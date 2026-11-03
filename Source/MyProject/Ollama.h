@@ -64,6 +64,10 @@ public:
     FString SendMessage(const FString& UserMessage);
     UFUNCTION(BlueprintCallable)
     FString GetStatesText() const;
+    UFUNCTION(BlueprintCallable)
+    void EndDay();
+    UFUNCTION(BlueprintCallable)
+    int GetCurrentDay() const;
    
 
 protected:
@@ -91,6 +95,8 @@ private:
     FString BuildStateDescription() const;
     FString BuildSystemPrompt() const;
     FString BuildMemoryDescription() const;
+    FString BuildEvaluationPrompt(const FString& UserMessage) const;
+    FString CreateEvaluationRequestBody(const FString& UserMessage);
 
 
     //voidä÷êî
@@ -111,9 +117,10 @@ private:
     void AddMemory(const FString& Content, int Importance);
     void UpdateMemories();
     void PrintMemories() const;
-    void EndDay();
     void ApplyEvaluation(const DayAction& Result);
     void ParseEvaluationResponse(const FString& ResponseBody);
     void EvaluateConversationWithAI(const FString& UserMessage);
+    void SendEvaluationRequest(const FString& Prompt);
+    void OnEvaluationResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 };
 
