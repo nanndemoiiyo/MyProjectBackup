@@ -310,69 +310,36 @@ void AOllama::ParseEvaluationResponse(const FString& ResponseBody) {
 void AOllama::EvaluateConversationWithAI(
     const FString& UserMessage)
 {
-    FString FakeResponse;
+    FString RequestBody =
+        CreateEvaluationRequestBody(
+            UserMessage);
 
-    if (UserMessage.Contains(TEXT("‚¦‚ç‚¢")))
-    {
-        FakeResponse =
-            TEXT("{"
-                "\"importance\":4,"
-                "\"memory\":\"praised by parent\","
-                "\"trust_delta\":3,"
-                "\"selfesteem_delta\":5,"
-                "\"confidence_delta\":2,"
-                "\"socialskill_delta\":0,"
-                "\"happiness_delta\":4,"
-                "\"stress_delta\":-2"
-                "}");
-    }
-    else if (UserMessage.Contains(TEXT("‚Î‚©")))
-    {
-        FakeResponse =
-            TEXT("{"
-                "\"importance\":7,"
-                "\"memory\":\"hurt by parent\","
-                "\"trust_delta\":-5,"
-                "\"selfesteem_delta\":-5,"
-                "\"confidence_delta\":-3,"
-                "\"socialskill_delta\":0,"
-                "\"happiness_delta\":-4,"
-                "\"stress_delta\":5"
-                "}");
-    }
-    else
-    {
-        FakeResponse =
-            TEXT("{"
-                "\"importance\":2,"
-                "\"memory\":\"talked with parent\","
-                "\"trust_delta\":1,"
-                "\"selfesteem_delta\":0,"
-                "\"confidence_delta\":0,"
-                "\"socialskill_delta\":0,"
-                "\"happiness_delta\":1,"
-                "\"stress_delta\":0"
-                "}");
-    }
-
-    ParseEvaluationResponse(FakeResponse);
+    SendEvaluationRequest(
+        RequestBody);
 }
-
 FString AOllama::BuildEvaluationPrompt(const FString& UserMessage) const {
     FString Prompt;
-    Prompt += TEXT("Analyze the parent's message to a child.\n"
-        "Return JSON only.\n"
-        "Do not explain anything.\n\n"
+    Prompt += TEXT(
+        "You are a child psychology evaluator.\n"
+        "Analyze how a 5-year-old child would be emotionally affected "
+        "by the parent's message.\n"
+        "Fill in ALL values.\n"
+        "Use positive numbers for positive effects.\n"
+        "Use negative numbers for negative effects.\n"
+        "Return ONLY valid JSON.\n"
+        "Do not explain.\n\n"
+
+        "Example:\n"
 
         "{\n"
-        "\"importance\":0,\n"
-        "\"memory\":\"\",\n"
-        "\"trust_delta\":0,\n"
-        "\"selfesteem_delta\":0,\n"
-        "\"confidence_delta\":0,\n"
+        "\"importance\":4,\n"
+        "\"memory\":\"Parent praised the child\",\n"
+        "\"trust_delta\":3,\n"
+        "\"selfesteem_delta\":5,\n"
+        "\"confidence_delta\":2,\n"
         "\"socialskill_delta\":0,\n"
-        "\"happiness_delta\":0,\n"
-        "\"stress_delta\":0\n"
+        "\"happiness_delta\":4,\n"
+        "\"stress_delta\":-2\n"
         "}\n\n"
 
         "Parent Message:\n");
@@ -416,6 +383,11 @@ void AOllama::OnEvaluationResponseReceived(
             ParseEvaluationResponse(JsonContent);
         }
     }
+    UE_LOG(
+        LogTemp,
+        Warning,
+        TEXT("Evaluation Response = %s"),
+        *Response->GetContentAsString());
 }
 
 
